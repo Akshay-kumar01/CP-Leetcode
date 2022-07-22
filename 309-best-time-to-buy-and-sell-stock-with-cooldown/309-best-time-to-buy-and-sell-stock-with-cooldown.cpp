@@ -10,12 +10,13 @@ public:
         int p1=0,p2=0;
         if(buy)
         {
-            return dp[i][buy]=max(-prices[i]+solve(dp,i+1,n,0,prices),solve(dp,i+1,n,1,prices));
+            dp[i][buy]=max(-prices[i]+solve(dp,i+1,n,0,prices),solve(dp,i+1,n,1,prices));
         }
         else
         {
-            return dp[i][buy]=max(prices[i]+solve(dp,i+2,n,1,prices),solve(dp,i+1,n,0,prices));
+            dp[i][buy]=max(prices[i]+solve(dp,i+2,n,1,prices),solve(dp,i+1,n,0,prices));
         }
+        return dp[i][buy];
     }
     int maxProfit(vector<int>& prices) {
         int n=prices.size();
